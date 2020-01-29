@@ -10,3 +10,7 @@ end
 @testset "FileReaders" begin
     include("fileReaders/test_FileReaders.jl")
 end
+
+@testset "Tasks" begin
+    include("tasks/test_Tasks.jl")
+end

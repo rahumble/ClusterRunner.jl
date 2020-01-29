@@ -1,5 +1,5 @@
 struct FilesystemOutput <: OutputDependency
-    alias::String
+    name::String
 end
 
 getalias(dep::FilesystemOutput)::String = dep.name
