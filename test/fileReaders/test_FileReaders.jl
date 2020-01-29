@@ -1,7 +1,6 @@
 module FileReadersTests
-    using Test
-
     using DataFrames
+    using Test
 
     using ClusterRunner.FileReaders
 
