@@ -1,12 +1,23 @@
 module Dependencies
     include("dependency.jl")
-    include("filesystemDependency.jl")
+
+    include("inputDependency.jl")
+    include("filesystemInput.jl")
+
+    include("outputDependency.jl")
+    include("filesystemOutput.jl")
 
     export
         # Types
         Dependency,
-        FilesystemDependency,
+
+        InputDependency,
+        FilesystemInput,
+
+        OutputDependency,
+        FilesystemOutput,
 
         # Methods
+        getalias,
         setup
 end

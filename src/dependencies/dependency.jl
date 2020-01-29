@@ -1,7 +1,7 @@
 abstract type Dependency end
 
 """
-    setup(dep::Dependency, rootFolder::string)::Nothing
-    Setups the dependency
+    getalias(dep::Dependency)::Nothing
+    Returns the local alias
 """
-function setup end
+function getalias end
