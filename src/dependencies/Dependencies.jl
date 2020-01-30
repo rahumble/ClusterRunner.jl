@@ -1,5 +1,6 @@
 module Dependencies
     include("dependency.jl")
+    include("param.jl")
 
     include("inputDependency.jl")
     include("filesystemInput.jl")
@@ -10,6 +11,7 @@ module Dependencies
     export
         # Types
         Dependency,
+        Param,
 
         InputDependency,
         FilesystemInput,

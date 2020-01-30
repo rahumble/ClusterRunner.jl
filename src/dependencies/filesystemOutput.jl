@@ -1,5 +1,5 @@
 struct FilesystemOutput <: OutputDependency
-    name::String
+    filename::String
 end
 
-getalias(dep::FilesystemOutput)::String = dep.name
+getalias(dep::FilesystemOutput)::String = splitext(dep.filename)[1]

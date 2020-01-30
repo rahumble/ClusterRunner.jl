@@ -1,5 +1,5 @@
 module Tasks
-    using ..Dependencies: Dependency, InputDependency, OutputDependency, FilesystemOutput, getalias
+    using ..Dependencies: Dependency, Param, InputDependency, OutputDependency, FilesystemOutput, getalias
 
     include("task.jl")
     include("exeTask.jl")
@@ -11,6 +11,7 @@ module Tasks
 
         # Methods
         getinputs,
+        getparams,
         getoutputs,
         getcommand
 end

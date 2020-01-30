@@ -21,9 +21,9 @@ newLocation = joinpath(rootFolder, "newFolderAlias")
 @test isfile(joinpath(newLocation, "subfile.txt"))
 
 # Good file copy
-fileDep = FilesystemInput("newFileAlias", file)
+fileDep = FilesystemInput("newFileAlias.txt", file)
 setup(fileDep, rootFolder)
-newLocation = joinpath(rootFolder, "newFileAlias")
+newLocation = joinpath(rootFolder, "newFileAlias.txt")
 @test isfile(newLocation)
 
 # Good folder symlink
@@ -42,6 +42,10 @@ newLocation = joinpath(rootFolder, "symFileAlias")
 # Missing location
 missingDep = FilesystemInput("newFolderAlias", joinpath(rootFolder, "fakePath"))
 @test_throws ArgumentError setup(missingDep, rootFolder)
+
+# Good alias
+fileDep = FilesystemInput("newFileAlias.txt", file)
+@test getalias(fileDep) == "newFileAlias"
 
 ### Clean up
 rm(dir; recursive = true)

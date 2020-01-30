@@ -1,15 +1,15 @@
 struct FilesystemInput <: InputDependency
-    alias::String
+    filename::String
     orgLocation::String
     symlink::Bool
 
-    function FilesystemInput(alias::String, orgLocation::String; symlink::Bool = false)::FilesystemDependency
-        return new(alias, orgLocation, symlink)
+    function FilesystemInput(filename::String, orgLocation::String; symlink::Bool = false)::FilesystemDependency
+        return new(filename, orgLocation, symlink)
     end
 end
 
 function setup(dep::FilesystemInput, rootFolder::String)::Nothing
-    filename = joinpath(rootFolder, dep.alias)
+    filename = joinpath(rootFolder, dep.filename)
 
     if !ispath(dep.orgLocation)
         throw(ArgumentError("dependency $(dep.orgLocation) does not exist."))
@@ -29,4 +29,4 @@ function setup(dep::FilesystemInput, rootFolder::String)::Nothing
     return nothing
 end
 
-getalias(dep::FilesystemInput)::String = dep.alias
+getalias(dep::FilesystemInput)::String = splitext(dep.filename)[1]
