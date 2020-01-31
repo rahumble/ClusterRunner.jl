@@ -3,12 +3,12 @@ module DependenciesTests
 
     using ClusterRunner.Dependencies
 
-    @testset "FilesystemInput" begin
-        include("test_filesystemInput.jl")
+    @testset "InputDependency" begin
+        include("test_inputDependency.jl")
     end
 
-    @testset "FilesystemOutput" begin
-        include("test_filesystemOutput.jl")
+    @testset "OutputDependency" begin
+        include("test_outputDependency.jl")
     end
 
     @testset "Param" begin

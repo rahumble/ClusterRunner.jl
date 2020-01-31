@@ -1,6 +1,6 @@
 # Good alias
-outfile = FilesystemOutput("output.csv")
+outfile = OutputDependency("output.csv")
 @test getalias(outfile) == "output"
 
-outfile = FilesystemOutput("output")
+outfile = OutputDependency("output")
 @test getalias(outfile) == "output"

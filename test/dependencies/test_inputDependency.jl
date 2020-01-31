@@ -14,37 +14,37 @@ end
 rootFolder = mktempdir(dir)
 
 # Good folder copy
-folderDep = FilesystemInput("newFolderAlias", subdir)
+folderDep = InputDependency("newFolderAlias", subdir)
 setup(folderDep, rootFolder)
 newLocation = joinpath(rootFolder, "newFolderAlias")
 @test isdir(newLocation)
 @test isfile(joinpath(newLocation, "subfile.txt"))
 
 # Good file copy
-fileDep = FilesystemInput("newFileAlias.txt", file)
+fileDep = InputDependency("newFileAlias.txt", file)
 setup(fileDep, rootFolder)
 newLocation = joinpath(rootFolder, "newFileAlias.txt")
 @test isfile(newLocation)
 
 # Good folder symlink
-symFolderDep = FilesystemInput("symFolderAlias", subdir; symlink = true)
+symFolderDep = InputDependency("symFolderAlias", subdir; symlink = true)
 @test_logs (:warn, "Symlinking inhibits reproducibility.") setup(symFolderDep, rootFolder)
 newLocation = joinpath(rootFolder, "symFolderAlias")
 @test islink(newLocation)
 @test isfile(joinpath(newLocation, "subfile.txt"))
 
 # Good file symlink
-symFileDep = FilesystemInput("symFileAlias", subdir; symlink = true)
+symFileDep = InputDependency("symFileAlias", subdir; symlink = true)
 @test_logs (:warn, "Symlinking inhibits reproducibility.") setup(symFileDep, rootFolder)
 newLocation = joinpath(rootFolder, "symFileAlias")
 @test islink(newLocation)
 
 # Missing location
-missingDep = FilesystemInput("newFolderAlias", joinpath(rootFolder, "fakePath"))
+missingDep = InputDependency("newFolderAlias", joinpath(rootFolder, "fakePath"))
 @test_throws ArgumentError setup(missingDep, rootFolder)
 
 # Good alias
-fileDep = FilesystemInput("newFileAlias.txt", file)
+fileDep = InputDependency("newFileAlias.txt", file)
 @test getalias(fileDep) == "newFileAlias"
 
 ### Clean up

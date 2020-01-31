@@ -3,10 +3,8 @@ module Dependencies
     include("param.jl")
 
     include("inputDependency.jl")
-    include("filesystemInput.jl")
 
     include("outputDependency.jl")
-    include("filesystemOutput.jl")
 
     export
         # Types
@@ -14,10 +12,8 @@ module Dependencies
         Param,
 
         InputDependency,
-        FilesystemInput,
 
         OutputDependency,
-        FilesystemOutput,
 
         # Methods
         getalias,
