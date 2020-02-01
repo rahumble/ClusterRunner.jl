@@ -1,4 +1,4 @@
-struct InputDependency <: Dependency
+struct InputDependency <: FileDependency
     filename::String
     orgLocation::String
     symlink::Bool

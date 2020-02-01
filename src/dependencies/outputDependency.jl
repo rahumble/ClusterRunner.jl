@@ -1,4 +1,4 @@
-struct OutputDependency <: Dependency
+struct OutputDependency <: FileDependency
     filename::String
 end
 

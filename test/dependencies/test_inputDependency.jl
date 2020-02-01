@@ -43,9 +43,10 @@ newLocation = joinpath(rootFolder, "symFileAlias")
 missingDep = InputDependency("newFolderAlias", joinpath(rootFolder, "fakePath"))
 @test_throws ArgumentError setup(missingDep, rootFolder)
 
-# Good alias
+# Good alias and filename
 fileDep = InputDependency("newFileAlias.txt", file)
 @test getalias(fileDep) == "newFileAlias"
+@test getfilename(fileDep) == "newFileAlias.txt"
 
 ### Clean up
 rm(dir; recursive = true)
