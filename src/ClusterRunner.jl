@@ -1,24 +1,41 @@
 module ClusterRunner
     include("dependencies/Dependencies.jl")
-    include("fileReaders/FileReaders.jl")
-
-    import .Dependencies: Dependency, FilesystemDependency, setup
+    using .Dependencies
     export
         # Types
         Dependency,
-        FilesystemDependency,
+        Param,
+        InputDependency,
+        OutputDependency
         
         # Methods
-        setup
     
-    import .FileReaders: Reader, AttributeReader, TableReader, read
+    include("fileReaders/FileReaders.jl")
+    using .FileReaders
     export
         # Types
         Reader,
         AttributeReader,
-        TableReader,
+        TableReader
 
         # Methods
-        read
+
+    include("tasks/Tasks.jl")
+    using .Tasks
+    export
+        # Types
+        Task,
+        ExeTask
+
+        # Methods
+
+    include("experiment.jl")
+    export
+        # Types
+        Experiment,
+
+        # Methods
+        addrun!,
+        writescript
 
 end # module

@@ -1,13 +1,19 @@
 abstract type Task end
 
 """
-    getinputs(task::Task)::Array{Dependency}
+    getinputs(task::Task)::Array{InputDependency}
     Returns the input dependencies
 """
 function getinputs end
 
 """
-    getoutputs(task::Task)::Array{OutputFile}
+    getparams(task::Task)::Array{Param}
+    Returns the dynamic params given to the task
+"""
+function getparams end
+
+"""
+    getoutputs(task::Task)::Array{OutputDependency}
     Returns the outputs created by the task
 """
 function getoutputs end

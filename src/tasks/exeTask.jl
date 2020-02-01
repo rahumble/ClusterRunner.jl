@@ -2,11 +2,11 @@ struct ExeTask <: Task
     exeDep::InputDependency
     posArgs::Array
     keywordArgs::AbstractDict
-    stdoutFile::FilesystemOutput
-    stderrFile::FilesystemOutput
+    stdoutFile::OutputDependency
+    stderrFile::OutputDependency
 
     function ExeTask(exeDep::InputDependency, posArgs::Array = [], keywordArgs::AbstractDict = Dict())::ExeTask
-        return new(exeDep, posArgs, keywordArgs, FilesystemOutput("stdout.txt"), FilesystemOutput("stderr.txt"))
+        return new(exeDep, posArgs, keywordArgs, OutputDependency("stdout.txt"), OutputDependency("stderr.txt"))
     end
 end
 

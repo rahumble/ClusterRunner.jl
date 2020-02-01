@@ -1,24 +1,14 @@
-### Setup temporary files and directories
-dir = mktempdir()
+exeDep = InputDependency("myExe", "mockExePath")
+infileDep = InputDependency("input.txt", "mockFilePath")
 
-exePath = joinpath(dir, "someExe")
-close(open(exePath, "w"))
-
-filePath = joinpath(dir, "someInputFile.txt")
-close(open(filePath, "w"))
-
-### Run tests
-exeDep = FilesystemInput("myExe", exePath)
-infileDep = FilesystemInput("input.txt", filePath)
-
-outfileDep = FilesystemOutput("posOutput.csv")
+outfileDep = OutputDependency("posOutput.csv")
 testPosArgs = [2, Param("posParam"), "abc", outfileDep]
 
 testKeywordArgs = OrderedDict(
     "-arg1" => infileDep,
     "--otherArg" => 3,
-    "--output1" => FilesystemOutput("out.csv"),
-    "--output2" => FilesystemOutput("other_out.csv"),
+    "--output1" => OutputDependency("out.csv"),
+    "--output2" => OutputDependency("other_out.csv"),
     "--flag" => nothing,
     "-p" => Param("keyParam")
 )

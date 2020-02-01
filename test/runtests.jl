@@ -14,3 +14,13 @@ end
 @testset "Tasks" begin
     include("tasks/test_Tasks.jl")
 end
+
+module ClusterRunnerTests
+    using Test
+
+    using ClusterRunner
+
+    @testset "Experiment" begin
+        include("test_experiment.jl")
+    end
+end
